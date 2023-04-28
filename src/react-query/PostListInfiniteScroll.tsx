@@ -28,15 +28,13 @@ const PostList = () => {
                 <option value="3">User 3</option>
             </select>
             <ul className="list-group">
-                {data.pages.map((page, index) => (
-                    <React.Fragment key={index}>
-                        {page.map((post) => (
-                            <li key={post.id} className="list-group-item">
-                                {post.title}
-                            </li>
-                        ))}
-                    </React.Fragment>
-                ))}
+                {data.pages.map((page, index) =>
+                    page.map((post) => (
+                        <li key={post.id} className="list-group-item">
+                            {post.title}
+                        </li>
+                    ))
+                )}
             </ul>
             <div className="button-group my-3">
                 <button

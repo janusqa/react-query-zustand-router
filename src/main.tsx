@@ -6,6 +6,8 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 
 import App from './App';
 import './index.css';
+import { RouterProvider } from 'react-router-dom';
+import router from './routing/routes';
 
 const queryClient = new QueryClient({
     // we can override default options here or per query
@@ -22,10 +24,15 @@ const queryClient = new QueryClient({
     },
 });
 
+// Routing!!!!
+// Instead of mounting the App component, we render the RouterProvider
+// which will render all our routes inclusive of the app component
+// the provider gets its router from route.tsx where the routes on
+// which components to load are defined.
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
     <React.StrictMode>
         <QueryClientProvider client={queryClient}>
-            <App />
+            <RouterProvider router={router} />
             <ReactQueryDevtools initialIsOpen={false} />
         </QueryClientProvider>
     </React.StrictMode>

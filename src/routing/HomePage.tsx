@@ -1,13 +1,16 @@
+import { Link } from 'react-router-dom';
+
 const HomePage = () => {
-  return (
-    <>
-      <p>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-        Incidunt, mollitia!
-      </p>
-      <a href="/users">Users</a>
-    </>
-  );
+    // throw new Error('Testing react router error handling');
+    return (
+        <>
+            <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+                Incidunt, mollitia!
+            </p>
+            <Link to="/users">Users</Link>
+        </>
+    );
 };
 
 export default HomePage;
