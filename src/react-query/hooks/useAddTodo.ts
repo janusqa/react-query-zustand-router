@@ -69,10 +69,12 @@ const useAddTodo = (onAdd: () => void) => {
             // so now we have a success we will use the data returned
             // by the server to finally complete the optimistic update
             // by using the real data returned by the server
+            // savedTodo: what was created on backend
+            // newTodo: what was created on the client optimistically. It our fake id=0
+            // We map thru the cache to find our optimistic todo and replace it with the real todo from server
+            // note we compare objects with strict equality. That is we want to know if its the same exact object
             queryClient.setQueryData<Todo[]>(CACHE_KEY_TODOS, (todos) =>
-                todos?.map((todo) =>
-                    todo.id === newTodo.id ? savedTodo : todo
-                )
+                todos?.map((todo) => (todo === newTodo ? savedTodo : todo))
             );
         },
         // The third parameter is something called context: unknown
